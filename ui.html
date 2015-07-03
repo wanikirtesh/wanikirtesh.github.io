@@ -1,0 +1,302 @@
+<html>
+	<head>
+		<link href="css/style.css" rel="stylesheet">
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<script src="js/runData.js"></script>
+		<script src="js/amcharts.js"></script>
+		<script src="js/pie.js"></script>
+		<script src="js/serial.js"></script>
+		<script src="js/mychartdata.js"></script>
+	</head>
+	<body>
+		<div class="main">
+			<header>
+				<div class="header">
+				<div class="logo"></div>
+				<h1>Selenium By Needs UI Examples</h1>
+				
+				</div>
+			</header>
+				<div id="tabs" style="background:#CCCCCC">
+					<ul>
+						<li><a href="#tabs-1">Form Elements</a></li>
+						<li><a href="#tabs-2">Table Example</a></li>
+						<li><a href="#tabs-3">Charts</a></li>
+						<li><a href="#tabs-4">Drag &amp; Drop</a></li>
+						<li><a href="#tabs-8">Multilevel Menu</a></li>
+						<li><a href="#tabs-5">Expandable Menu</a></li>
+						<li><a href="#tabs-6">Modal Form</a></li>
+						<li><a href="#tabs-7">Tooltip</a></li>
+						<li><a href="#tabs-9">Slider</a></li>
+						<li><a href="#tabs-10">Suggest Box</a></li>
+						<li><a href="#tabs-11">Custom Dropdown</a></li>
+						<li><a href="#tabs-12">Inner Frames</a></li>
+						<!--li><a href="#tabs-3">12Jun14,12:30:23</a><span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li-->
+					</ul>
+					<div id="tabs-1">
+						<form class="form-horizontal">
+							<fieldset><!-- Form Name --><p></p>
+								<legend><b>PERSONAL INFORMATION</b></legend>
+								<p><!-- Text input--></p>
+								<div class="control-group">
+									<p>First name: <input name="firstname" type="text"></p>
+									<p>Last name: <input name="lastname" type="text"></p>
+								</div>
+								<div class="control-group"><strong><label>Address</label></strong><p><br/></p>
+									<p><textarea id="address"></textarea></p>
+								</div>
+								<p><!-- Multiple Radios --></p>
+								<div class="control-group"><strong><label>Sex</label></strong><p><br/></p>
+									<p><input id="sex-0" checked="checked" name="sex" type="radio" value="Male">&nbsp; Male&nbsp;&nbsp;&nbsp; <input id="sex-1" name="sex" type="radio" value="Female"><label class="radio" for="sex-1"> Female</label></p>
+									<p></p>
+								</div>
+								<p><!-- Multiple Radios (inline) --></p>
+								<div class="control-group"><strong><label class="control-label" for="exp">Years of Experience</label></strong><p><br/></p>
+									<p><input id="exp-0" checked="checked" name="exp" type="radio" value="1">1&nbsp;&nbsp;&nbsp; <input id="exp-1" name="exp" type="radio" value="2">2&nbsp;&nbsp;&nbsp; <input id="exp-2" name="exp" type="radio" value="3">3 &nbsp;&nbsp; <input id="exp-3" name="exp" type="radio" value="4">4 &nbsp;&nbsp; <input id="exp-4" name="exp" type="radio" value="5">5 &nbsp;&nbsp; <input id="exp-5" name="exp" type="radio" value="6">6 &nbsp;&nbsp; <input id="exp-6" name="exp" type="radio" value="7"><label class="radio inline" for="exp-6">7</label></p>
+									<p></p>
+								</div>
+								<div class="control-group">
+								<p>Date: <input id="datepicker" type="text"></p>
+								</div>
+								<p><!-- Multiple Checkboxes --></p>
+								<div class="control-group">
+									<strong><label class="control-label" for="profession">Profession</label></strong><p><br/></p>
+									<p><input id="profession-0" name="profession" type="checkbox" value="Manual Tester"> Manual Tester&nbsp;&nbsp;&nbsp; <input id="profession-1" name="profession" type="checkbox" value="Automation Tester"><label class="checkbox" for="profession-1"> Automation Tester</label></p>
+									<p></p>
+								</div>
+								<p><!-- File Button --></p>
+								<div class="control-group">
+									<strong><label class="control-label" for="photo">Profile Picture</label></strong><p><br/></p>
+									<p><input id="photo" class="input-file" name="photo" type="file"></p>
+								</div>
+								<p><!-- Multiple Checkboxes (inline) --></p>
+								<div class="control-group">
+									<strong><label>Automation Tool</label></strong><p><br/></p>
+									<p><input id="tool-0" name="tool" type="checkbox" value="QTP">&nbsp; QTP</p>
+									<p><input id="tool-1" name="tool" type="checkbox" value="Selenium IDE">&nbsp; Selenium IDE</p>
+									<p><input id="tool-2" name="tool" type="checkbox" value="Selenium Webdriver">&nbsp; Selenium Webdriver</p>
+								</div>
+								<p><!-- Select Basic --></p>
+								<div class="control-group">
+									<p><strong><label>Continents</label></strong></p>
+									<div class="controls"><select id="continents" class="input-xlarge" name="continents"><option>Asia</option><option>Europe</option><option>Africa</option><option>Australia</option><option>South America</option><option>North America</option><option>Antartica</option></select></div>
+								</div>
+								<p><!-- Select Multiple --></p>
+								<div class="control-group">
+									<p><strong><label>Selenium Commands</label></strong></p>
+									<div class="controls"><select id="selenium_commands" class="input-xlarge" multiple="multiple" name="selenium_commands"><option>Browser Commands</option><option>Navigation Commands</option><option>Switch Commands</option><option>Wait Commands</option><option>WebElement Commands</option></select></div>
+								</div>
+								<p><!-- Button --></p>
+								<div class="control-group">
+									<div class="button"><button id="submit" class="btn btn-info" name="submit">Button</button></div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+					<div id="tabs-2">
+						<h2>Result Summary</h2>
+						<table class="summarytable">
+							<thead>
+								<tr><th>Sr</th><th>Executed on</th><th>Passed</th><th>Failed</th><th>Skipped</th></tr>
+							</thead>
+							<tbody>
+								
+							<tbody>                
+						</table>
+						
+					</div>
+					<div id="tabs-3">
+						<div id='graphTabs'> 
+							  <ul> 
+								<li><a href='#gtabs-1'>Line Chart</a></li> 
+								<li><a href='#gtabs-2'>Bar Chart</a></li> 
+							  </ul> 
+							  <div id='gtabs-1'> 
+									<div class='kchart chartStyle' id='myLineChart'></div> 
+							  </div> 
+							  <div id='gtabs-2'> 
+								<div class='kchart chartStyle' id='myBarChart'></div> 
+							  </div> 
+							</div>
+					</div>
+					<div style="height:500px" id="tabs-4">
+						<div id="draggable" class="ui-widget-content">
+						<p>Drag me to my target</p>
+						</div>
+						<div id="droppable" class="ui-widget-header">
+						<p>I Am Target</p>
+						</div>
+
+					</div>
+					<div style="height:500px" id="tabs-5">
+						<ul class="top">
+							<li><a href="#">Menu1</a>
+
+							</li>
+							<li> <a href="#">Menu2 >></a>
+
+								<ul class="sub">
+									<li><a href="#">SubMenu1</a>
+									</li>
+									<li> <a href="#">SubMenu2 >></a>
+
+										<ul class="sub">
+											<li><a target="_blank" href="http://www.google.com">Link to Google</a>
+
+											</li>
+											<li><a href="http://facebook.com">Link to Facebook</a>
+
+											</li>
+										</ul>
+									</li>
+									<li><a href="#">SubMenu3</a>
+
+									</li>
+								</ul>
+							</li>
+							<li><a href="#">Menu3</a>
+
+							</li>
+						</ul>
+						
+					</div>
+					<div id="tabs-6" style="width:727px;min-height:500px">
+						<div id="dialog-form" title="Create new user">
+						  <p class="validateTips">All form fields are required.</p>
+						 
+						  <form>
+							<fieldset>
+							  <label for="name">Name</label>
+							  <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
+							  <label for="email">Email</label>
+							  <input type="text" name="email" id="email" class="text ui-widget-content ui-corner-all">
+							  <label for="password">Password</label>
+							  <input type="password" name="password" id="password" class="text ui-widget-content ui-corner-all">
+						 
+							  <!-- Allow form submission with keyboard without duplicating the dialog button -->
+							  <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+							</fieldset>
+						  </form>
+						</div>
+						 
+						 
+						<div style="width:100%" id="users-contain" class="ui-widget">
+						  <h2>Existing Users:</h2>
+						  <table style="width:100%" id="users" >
+							<thead>
+							  <tr class="ui-widget-header ">
+								<th>Name</th>
+								<th>Email</th>
+								<th>Password</th>
+							  </tr>
+							</thead>
+							<tbody>
+							  <tr>
+								<td>John Doe</td>
+								<td>john.doe@example.com</td>
+								<td>johndoe1</td>
+							  </tr>
+							</tbody>
+						  </table>
+						</div>
+						<button id="create-user">Create new user</button>
+					
+					</div>
+					
+					<div id="tabs-7" style="width:727px;min-height:500px;text-align:center">
+						 <br/><br/><br/><br/><br/>
+						 <input id="age" title="We ask for your age only for statistical purposes."></p>
+							<p>Hover the field to see the tooltip.</p>
+					</div>
+					
+					<div id="tabs-8" style="width:727px;min-height:500px;">
+						<ul id="mlmenu">
+						  <li class="ui-state-disabled">Aberdeen</li>
+						  <li>Ada</li>
+						  <li>Adamsville</li>
+						  <li>Addyston</li>
+						  <li>Delphi
+							<ul>
+							  <li class="ui-state-disabled">Ada</li>
+							  <li>Saarland</li>
+							  <li>Salzburg an der schönen Donau</li>
+							</ul>
+						  </li>
+						  <li>Saarland</li>
+						  <li>Salzburg
+							<ul>
+							  <li>Delphi
+								<ul>
+								  <li>Ada</li>
+								  <li>Saarland</li>
+								  <li>Salzburg</li>
+								</ul>
+							  </li>
+							  <li>Delphi
+								<ul>
+								  <li>Ada</li>
+								  <li>Saarland</li>
+								  <li>Salzburg</li>
+								</ul>
+							  </li>
+							  <li>Perch</li>
+							</ul>
+						  </li>
+						  <li class="ui-state-disabled">Amesville</li>
+						</ul>
+					</div>
+					<div id="tabs-9" style="width:727px;min-height:500px;">
+						<p>
+						  <label for="amount">Price range:</label>
+						  <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+						</p>
+						 <br/>
+						<div id="slider-range"></div>
+					</div>
+					<div id="tabs-10" style="width:727px;min-height:500px;">
+						<div class="ui-widget">
+						  <label for="tags">Tag programming languages: </label><br/><br/>
+						  <input id="tags" size="50">
+						</div>
+					</div>
+					<div id="tabs-11" style="width:727px;min-height:500px;">
+						<form action="#">
+						 
+						  <div id="circle"></div>
+						 
+						  <fieldset>
+							<label for="radius">Circle radius</label>
+							<select name="radius" id="radius">
+							  <option value="50">50px</option>
+							  <option value="100">100px</option>
+							  <option value="150" selected="selected">150px</option>
+							  <option value="200">200px</option>
+							  <option value="250">250px</option>
+							</select>
+						 
+							<label for="color">Circle color</label>
+							<select name="color" id="color">
+							  <option value="black">Black</option>
+							  <option value="red">Red</option>
+							  <option value="yellow" selected="selected">Yellow</option>
+							  <option value="blue">Blue</option>
+							  <option value="green">Green</option>
+							</select>
+						  </fieldset>
+						 
+						</form>
+					</div>
+					<div id="tabs-12" style="width:727px;min-height:500px;">
+						<iframe id="innerFrame" src="frampePage.html">
+						</iframe>
+					</div>
+					
+				</div>
+			<footer>
+			</footer>
+		</div>
+	</body>
+	
+</html>

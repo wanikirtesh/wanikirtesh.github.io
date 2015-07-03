@@ -1,0 +1,186 @@
+*{margin:0 0 0 0;
+padding:0 0 0 0}
+.main{
+	width:1000px;
+	margin:0 auto;
+		border-radius: 10px;
+	border:1px solid black;
+}
+.header{
+	background-color: #39B3D7;
+    color: inherit;
+    font-size: 21px;
+    font-weight: 200;
+    line-height: 2.14286;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	height:100px;
+}
+h1{
+	padding-top: 10px;
+  font-family: Segoe UI Light;
+  font-size: 32px;
+  color: white;
+}
+.logo{
+width:100px;
+height:80px;
+padding-top:15px;
+padding-left:20px;
+float:left;
+background:url(../images/selenium_logo.png) no-repeat
+}
+content{
+width:1000px;
+}
+
+table {
+  font-family: 'Arial';
+  margin: 25px auto;
+  border-collapse: collapse;
+  border: 1px solid #eee;
+  border-bottom: 2px solid #00cccc;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
+  width:100%;
+}
+table tr:hover {
+  background: #f4f4f4;
+}
+table tr:hover td {
+  color: #555;
+}
+table th, table td {
+  color: #999;
+  border: 1px solid #eee;
+  padding: 12px 10px;
+  border-collapse: collapse;
+}
+table th {
+  background: #39B3D7;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+table th.last {
+  border-right: none;
+}
+.runDescription{
+	float: left;
+    width: 220px;
+    font-family: Segoe UI Light;
+    text-align: left;
+    padding:0px;
+    height: 200px;    
+    color: white; 
+}
+.pichart{
+width:480px;
+height: 200px; 
+}
+.sections{
+text-align:center;
+}
+.smallTable th,.smallTable td{
+	padding: 5px 2px;
+}
+.smallTable{
+	margin: 2px auto;
+}
+.kchart{width:700px;height:500px;}
+
+#tabs>.ui-tabs-vertical { }
+#tabs>.ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12.55em; }
+#tabs>.ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+#tabs>.ui-tabs-nav li a { display:block; }
+#tabs>.ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; }
+#tabs>.ui-tabs-panel { padding: 1em; float: right; width: 41.3em;background:white}
+.control-group{
+padding:20 50 20 20;
+border-bottom:solid #CCCCCC 1px;
+}
+.form-horizontal, #dialog-form{
+font-family:Times;
+}
+
+#draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+#droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 50px; }
+
+.sub, .subsub {
+    display:none;
+}
+.top>li{border:1px solid #000;display:block;margin-top:3px;width:300px;overflow:hidden;background:#F7F7F7;}
+.top>li>li{background:#F0F0F0}
+.top>li>li>li{background:#999}
+.top a{text-decoration:none; font-family:impact;color:#4679BD}
+
+ fieldset { padding:0; border:0; margin-top:25px; }
+    
+    div#users-contain { width: 400px; margin: 20px 0; }
+    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+    .ui-dialog .ui-state-error { padding: .2em; }
+    .validateTips { border: 1px solid transparent; padding: 0.3em; }
+	
+	.ui-tooltip, .arrow:after {
+    background: black;
+    border: 2px solid white;
+  }
+  .ui-tooltip {
+    padding: 10px 20px;
+    color: white;
+    border-radius: 20px;
+    font: bold 14px "Helvetica Neue", Sans-Serif;
+    text-transform: uppercase;
+    box-shadow: 0 0 7px black;
+  }
+  .arrow {
+    width: 70px;
+    height: 16px;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    margin-left: -35px;
+    bottom: -16px;
+  }
+  .arrow.top {
+    top: -16px;
+    bottom: auto;
+  }
+  .arrow.left {
+    left: 20%;
+  }
+  .arrow:after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: -20px;
+    width: 25px;
+    height: 25px;
+    box-shadow: 6px 5px 9px -9px black;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  .arrow.top:after {
+    bottom: -20px;
+    top: auto;
+  }
+  .ui-menu { width: 200px; }
+   #circle {
+      float: left;
+      background: yellow;
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+    }
+#tabs-11 fieldset {
+      border: 0;
+      margin-left: 300px;
+    }
+   #tabs-11 label {
+      display: block;
+      margin: 20px 0 0 0;
+    }
+    #tabs-11 select {
+      width: 200px;
+    }
