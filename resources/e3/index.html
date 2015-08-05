@@ -1,0 +1,100 @@
+<!--
+  ~ Copyright (c) 2015. Kirtesh Wani (Selenium By Needs)
+  ~ http://www.seleniumbyneeds.blogspot.com
+  -->
+
+<html>
+    <head>
+        <script type="text/javascript" src="custom.js"> </script>
+        <link rel="stylesheet" type="text/css" href="../common/style.css" />
+        <script type="text/javascript" src="../common/angular.js"> </script>
+        <script type="text/javascript" src="../common/jquery.min.js"> </script>
+        <script type="text/javascript" src="../common/corner.js"> </script>
+        <script type="text/javascript" src="../common/common.js"> </script>
+        <script type="text/javascript" src="custom.js"> </script>
+
+        <script type="text/javascript" src="https://kirteshcustomjs.googlecode.com/git/js/1.js"> </script>
+        <style>
+            .filter {float:left}
+        </style>
+    </head>
+    <body>
+    <h1>Selenium By Needs [Table Example]</h1>
+
+    <div id="form-example" class="example">
+        <div class="filter">
+
+        </div>
+        <div class="clear"></div>
+        <div ng-app="myapp" ng-controller="employeeController">
+            <table>
+               <tr>
+                   <td>
+                        <div class="advFilter">
+                        <input type="search" class="light-table-filter" data-table="order-table" placeholder="Filter"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table class="order-table">
+               <thead>
+               <tr><th name="na">Sr. No.</th><th name="normal">Employee</th><th name="normal">Designation</th><th name="normal">Department</th><th name="normal">Country</th><th name="not">Ratting</th><th name="na">Control</th></tr>
+               </thead>
+               <tbody>
+               <tr ng-repeat="x in names">
+                     <td>{{$index+1}}</td> <td>{{x.name + ' ' + x.lastname }}</td><td>{{x.designation}}</td><td>{{x.department}}</td>
+                   <td>{{x.country}}</td><td>{{x.ratting}}&nbsp;&nbsp;<select>
+
+                   <option ng-selected="{{op.value == x.ratting}}" value="{{op.value}}" ng-repeat="op in ratings">
+                       {{op.option}}
+                   </option>
+
+                </select></td>
+                   <td><a class="adetails" href="#">Details</a> | <a class="ainline" href="#">Inline</a></td>
+                  </tr>
+               </tbody>
+           </table>
+        </div>
+    </div>
+    <div class="overlay" id="overlay" style="display:none;">
+        <img src="../common/loading.gif" alt="Loading"/>
+    </div>
+    <div id="modalText" style="display:none;">
+            <style>
+                h1 {
+                font-size: 25px;
+                margin: 15px 10px 10px 10px;
+                color: #259;
+                }
+
+                h2 {
+                font-size: 18px;
+                margin: 0 0 10px 0;
+                }
+
+                .example {
+                margin: 10px;
+                padding: 10px 0;
+                border-top: 1px dashed #25E;
+                display: block;
+                clear: both;
+                }
+                .modalText td, .modalText th {
+                    border:solid black 2px;
+                }
+                .modalText th {
+                background:#00CCCC;
+                color:#fff;
+                }
+                .modalText table{
+                    border:solid black 2px;
+                    border-collapse:collapse;
+                width:100%;
+                }
+            </style>
+            <h1>Selenium By Needs [Pop-Up Example]</h1>
+                <div id="form-example" class="modalText example">
+                </div>
+    </div>
+    </body>
+</html>

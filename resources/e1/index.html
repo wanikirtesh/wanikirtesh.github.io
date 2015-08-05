@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+  ~ Copyright (c) 2015. Kirtesh Wani (Selenium By Needs)
+  ~ http://www.seleniumbyneeds.blogspot.com
+  -->
+
+<html>
+    <head>
+        <title>Selenium By Needs [Login Example]</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="../common/style.css" />
+        <script type="text/javascript" src="../common/jquery.min.js"> </script>
+         <script type="text/javascript" src="../common/corner.js"> </script>
+    	<style>
+    		#loginform{
+    			margin:0 auto;
+    			width:260px;
+    			border:solid #000 1px;
+    			padding:10px;
+    		}
+    	</style>
+    	<script type="text/javascript">
+    	$(function() {
+    		$(".example").load("login.html");
+    		$("#loginform").corner();
+    	})	
+    	</script>
+    </head>
+    <body>
+        <h1>Selenium By Needs [Login Example]</h1>
+        <div id="form-example" class="example">
+			
+        </div>
+        <div class="overlay" id="overlay" style="display:none;">
+        	<img src="../common/loading.gif" alt="Loading"/>
+        </div>
+    </body>
+</html>
