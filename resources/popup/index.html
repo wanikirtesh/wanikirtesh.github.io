@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+  ~ Copyright (c) 2015. Kirtesh Wani (Selenium By Needs)
+  ~ http://www.seleniumbyneeds.blogspot.com
+  -->
+
+<html>
+    <head>
+        <title>Selenium By Needs [Login Example]</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="../common/style.css" />
+        <script type="text/javascript" src="../common/jquery.min.js"> </script>
+         <script type="text/javascript" src="../common/corner.js"> </script>
+		 <script type="text/javascript" src="../common/common.js"> </script>
+    	<style>
+    		
+    	</style>
+    	<script type="text/javascript">
+    	$(function() {
+			var count = parseInt(getUrlVars()["va"]);
+			// alert(count);
+			 if(isNaN(count)){
+			   count = parseInt(getRandomArbitrary(2,10));
+			 }else{
+				$("#kount").html("<h1>There will more "+(count-1)+"</h1>");
+			 }
+			 
+			 if(count<=1){
+				$("#kount").html("<h1>Selenium By Needs</h1>");
+				$("#form-example").html("");
+			 }
+    		$('a').click(function (event) {
+			  
+			  event.preventDefault();
+				window.open("index.html?va="+(--count), "popupWindow"+(--count), "width=600, height=400, scrollbars=yes");
+			  });
+    	})	
+    	</script>
+    </head>
+    <body>
+        <h1>Selenium By Needs [Switch Window Example]</h1>
+		<div id='kount'>
+		</div>
+        <div id="form-example" class="example">
+			<a href="#">Click Me</a>
+        </div>
+        
+    </body>
+</html>
