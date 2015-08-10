@@ -29,12 +29,12 @@
 				$("#nxa").html(getQuest()[parseInt(getUrlVars()["ans"])].answer);
 				}
 			}
+			else{
+				$("#nxa").html("<span style='color:red'>!!!Answer is not correct!!!</span>");
+			}
 		}
 		
     	$(function() {
-		
-		
-		
 			myRnd =  parseInt(getRandomArbitrary(0,10));
 			que = getQuest()[myRnd].question;
 			ans = getQuest()[myRnd].answer;
