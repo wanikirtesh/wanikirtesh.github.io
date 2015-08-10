@@ -12,28 +12,52 @@
         <script type="text/javascript" src="../common/jquery.min.js"> </script>
          <script type="text/javascript" src="../common/corner.js"> </script>
 		 <script type="text/javascript" src="../common/common.js"> </script>
+		 <script type="text/javascript" src="quest.js"> </script>
     	<style>
     		
     	</style>
     	<script type="text/javascript">
+		var myRnd;
+		var que;
+		var ans;
+		function validateAnswer(){
+			if($("#ans").val()==ans){
+				
+				if(typeof getUrlVars()["ans"] === 'undefined'){
+					$("#nxa").html("<h1>Congratulations!!!</h1>");
+				}else{
+				$("#nxa").html(getQuest()[parseInt(getUrlVars()["ans"])].answer);
+				}
+			}
+		}
+		
     	$(function() {
+		
+		
+		
+			myRnd =  parseInt(getRandomArbitrary(0,10));
+			que = getQuest()[myRnd].question;
+			ans = getQuest()[myRnd].answer;
 			var count = parseInt(getUrlVars()["va"]);
-			// alert(count);
-			 if(isNaN(count)){
+			if(isNaN(count)){
 			   count = parseInt(getRandomArbitrary(2,10));
-			 }else{
-				$("#kount").html("<h1>There will more "+(count-1)+"</h1>");
-			 }
+			   
+			}else{
+				//$("#kount").html("<h3>There will more "+(count-1)+"</h3>");
+			}
 			 
-			 if(count<=1){
-				$("#kount").html("<h1>Selenium By Needs</h1>");
+			if(count<=1){
+			//alert(getUrlVars()["ans"]);
+				$("#kount").html("<h1>Answre is: " + getQuest()[parseInt(getUrlVars()["ans"])].answer + "</h1>");
 				$("#form-example").html("");
+			 }else{
+				$('#mq').html('<h1>' + que + '</h1>')
 			 }
-    		$('a').click(function (event) {
-			  
-			  event.preventDefault();
-				window.open("index.html?va="+(--count), "popupWindow"+(--count), "width=600, height=400, scrollbars=yes");
-			  });
+    		
+			$('a').click(function (event) {
+				event.preventDefault();
+				window.open("index.html?va="+(--count)+"&ans="+myRnd, "popupWindow"+(--count), "width=600, height=400, scrollbars=yes");
+			});
     	})	
     	</script>
     </head>
@@ -41,9 +65,14 @@
         <h1>Selenium By Needs [Switch Window Example]</h1>
 		<div id='kount'>
 		</div>
+		<div id='mq'>
+		
+		</div>
         <div id="form-example" class="example">
-			<a href="#">Click Me</a>
+			<input id="ans"/>&nbsp;&nbsp;&nbsp;<a href="#">Click Me for Answer</a><br/><br/><br/>
+			<button onclick="validateAnswer()">Validate Answer to generate last page Answer</button>
         </div>
-        
+        <div id="nxa">
+		</div>
     </body>
 </html>
