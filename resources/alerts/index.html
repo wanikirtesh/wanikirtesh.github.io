@@ -10,14 +10,40 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="../common/style.css" />
         <script type="text/javascript" src="../common/jquery.min.js"> </script>
-         <script type="text/javascript" src="../common/corner.js"> </script>
+         <script type="text/javascript" src="../common/angular.js"> </script>
+        <script type="text/javascript" src="../common/corner.js"> </script>
 		 <script type="text/javascript" src="../common/common.js"> </script>
+		<script type="text/javascript" src="custom.js"> </script>
 
+        <script type="text/javascript" src="data.js"> </script>
+        
     </head>
     <body>
         <h1>Selenium By Needs [Switch Window Example]</h1>
-		<div id="form-example" class="example">
+		<div id="form-example1" class="example">
+			<h1>Normal Alert</h1>
 			<button id="alert1" onclick ="alert('You clicked to invoke me');">Click me for Alert</button> <br/><br/>
+		</div>
+        <div  ng-app="myapp" ng-controller="employeeController" id="form-example2" class="example">
+			<h1>Confirmation Alert</h1>
+			<table class="order-table">
+               <thead>
+               <tr><th name="na">Sr. No.</th><th name="normal">Employee</th><th name="normal">Designation</th><th name="normal">Department</th><th name="normal">Country</th><th name="not">Ratting</th><th name="na">Control</th></tr>
+               </thead>
+               <tbody>
+               <tr ng-repeat="x in names">
+                     <td>{{$index+1}}</td> <td>{{x.name + ' ' + x.lastname }}</td><td>{{x.designation}}</td><td>{{x.department}}</td>
+                   <td>{{x.country}}</td><td>{{x.ratting}}&nbsp;&nbsp;<select>
+
+                   <option ng-selected="{{op.value == x.ratting}}" value="{{op.value}}" ng-repeat="op in ratings">
+                       {{op.option}}
+                   </option>
+
+                </select></td>
+                   <td><a class="ddetails" href="#">Delete</a> </td>
+                  </tr>
+               </tbody>
+           </table>
 		</div>
         
     </body>
