@@ -76,6 +76,9 @@ $(function(){
 			  $(this).closest ('tr').remove();
 			  alert('Record deleted Successfully');
 		  }
+		  else{
+			  $(this).closest ('tr').css('background','#b5fcfc')
+		  }
       });
        
 });
