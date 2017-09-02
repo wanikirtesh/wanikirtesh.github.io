@@ -80,6 +80,17 @@ $(function(){
 			  $(this).closest ('tr').css('background','#b5fcfc')
 		  }
       });
+	  
+	  $('.addNew').click(function (event){
+		  var data = window.prompt('Enter comma seperated three values');
+		  if(data!=null && data.split(',').length==3){
+			  var x = data.split(',');
+			  $('.tblName tr:last').after('<tr><td>'+x[0]+'</td><td>'+x[1]+'</td><td>'+x[2]+'</td></tr>');
+			  
+		  }else{
+			  alert("invalid input");
+		  }
+	  });
        
 });
 
