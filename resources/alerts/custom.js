@@ -85,6 +85,7 @@ $(function(){
 		  var data = window.prompt('Enter comma seperated three values');
 		  if(data!=null && data.split(',').length==3){
 			  var x = data.split(',');
+			  if(x[0]!='1')
 			  $('.tblName tr:last').after('<tr><td>'+x[0]+'</td><td>'+x[1]+'</td><td>'+x[2]+'</td></tr>');
 			  
 		  }else{
