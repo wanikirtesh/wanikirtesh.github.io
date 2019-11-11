@@ -51,7 +51,13 @@ $(document).ready(function(){
 			fltString += (colname + "=" + $(this).val().join(",") + "&");
 		})
 		filteredData += ("&" + fltString);
-		setTimeout(function(){window.open("./report.html" + filteredData , "popupWindow", "width=800,resizable=false,height=650,scrollbars=yes")},getRandomInt(1000,3000));
+		$('#btnGen').prop( "disabled", true );
+		$('#btnGen').html( '<span class="spinner-grow spinner-grow-sm" style="display:none" role="status" aria-hidden="true"></span>Loading...' );
+		$('#btnGen span').css("display","inline-block");
+		setTimeout(function(){window.open("./report.html" + filteredData , "popupWindow", "width=800,resizable=false,height=650,scrollbars=yes");
+			$('#btnGen').prop( "disabled", false );
+			$('#btnGen').html( 'Generate Report' );
+		},getRandomInt(1000,3000));
 	})
 })
 
