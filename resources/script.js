@@ -54,7 +54,7 @@ $(document).ready(function(){
 		$('#btnGen').prop( "disabled", true );
 		$('#btnGen').html( '<span class="spinner-grow spinner-grow-sm" style="display:none" role="status" aria-hidden="true"></span>Loading...' );
 		$('#btnGen span').css("display","inline-block");
-		setTimeout(function(){window.open("./report.html" + filteredData , "popupWindow", "width=800,resizable=false,height=650,scrollbars=yes");
+		setTimeout(function(){window.open("./report.html" + filteredData , "popupWindow", "width=800,resizable=false,height=700,scrollbars=yes");
 			$('#btnGen').prop( "disabled", false );
 			$('#btnGen').html( 'Generate Report' );
 		},getRandomInt(1000,3000));

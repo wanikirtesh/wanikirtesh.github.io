@@ -13,21 +13,26 @@ $(document).ready(function(){
 			var dm;
 			Object.keys(filteredData[0]).forEach(key => {
 				var col = {};
-				col.data = key;
-				col.title = key.replace("_"," ").trim()
+				if(!key.includes("action")){
+					col.data = key;
+					col.title = key.replace("_"," ").trim()
+					
+					dm = Object.assign({},col); //important
+				}else{
+					col.data = key;
+					col.render = function(data, type, full){return '<input type="checkbox" '+data+'></input>';}
+				}
 				columns.push(col);
-				dm = Object.assign({},col); //important
 			})
 			dm.title="S.No";
 			columns.splice(0,0,dm)
-			columns.push({"title":"Action","data":null})
+			//columns.push({"title":"Action","data":null})
 			
 			var filters = $.urlParam("fltlist").split(",");
 			for(var i =0;i<filters.length-1;i++){
-				console.log($.urlParam(filters[i]))
 				var ref_ = $.urlParam(filters[i]).split(",")
 				filteredData = filteredData.filter(x => ref_.includes(x[filters[i]].toString()))
-				
+
 			}
 			tbl = $("#rpt").DataTable({
 				"data":filteredData,
@@ -35,17 +40,17 @@ $(document).ready(function(){
 				"columnDefs": [ {
 					"searchable": false,
 					"orderable": false,
-					"targets": 0
+					"targets": [0,6]
 				} ],
 				"order": [[ 1, 'asc' ]]
-			})
+			});
 			tbl.on( 'order.dt search.dt', function () {
 				tbl.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
 					cell.innerHTML = i+1;
 				});
-				tbl.column(6, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-					cell.innerHTML = "<input type='checkbox'></input>";
-				});
 			} ).draw();
+			
+
+			
 	});
 })
