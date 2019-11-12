@@ -1,1 +1,0 @@
-function getRunDataForMe(){return([{"date":"01_06_15_05_05_18_362","Passed":12,"Failed":10,"Skipped":0,"displayname":"01Jun15-05:05"},{"date":"01_06_15_05_05_49_459","Passed":12,"Failed":10,"Skipped":0,"displayname":"01Jun15-05:05"},{"date":"02_06_15_10_52_58_892","Passed":12,"Failed":10,"Skipped":0,"displayname":"02Jun15-10:52"}]);}
