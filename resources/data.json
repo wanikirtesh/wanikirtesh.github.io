@@ -4,700 +4,700 @@
 			"department": "Technology",
 			"region": "Asia",
 			"salary_band": "band 2",
-			"ratting": 10,
+			"rating": 10,
 			"_action": ""
 		}, {
 			"_name": "Deepak Ganguli",
 			"department": "Administration",
 			"region": "Americas",
 			"salary_band": "band 3",
-			"ratting": 3,
+			"rating": 3,
 			"_action": "checked"
 		}, {
 			"_name": "Mahesh Dhurmadhikari",
 			"department": "Finance",
 			"region": "Europe",
 			"salary_band": "band 4",
-			"ratting": 4,
+			"rating": 4,
 			"_action": "checked"
 		}, {
 			"_name": "Yomkesh Mukharji",
 			"department": "Marketing",
 			"region": "UAE",
 			"salary_band": "band 5",
-			"ratting": 5,
+			"rating": 5,
 			"_action": "checked"
 		}, {
 			"_name": "Dipen Warma",
 			"department": "Technology",
 			"region": "Asia",
 			"salary_band": "band 6",
-			"ratting": 6,
+			"rating": 6,
 			"_action": "checked"
 		}, {
 			"_name": "Ronita Acharya",
 			"department": "Administration",
 			"region": "Americas",
 			"salary_band": "band 7",
-			"ratting": 7,
+			"rating": 7,
 			"_action": ""
 		}, {
 			"_name": "Mahesh Somani",
 			"department": "Finance",
 			"region": "Asia",
 			"salary_band": "band 8",
-			"ratting": 8,
+			"rating": 8,
 			"_action": "checked"
 		}, {
 			"_name": "Manindar Sing",
 			"department": "Marketing",
 			"region": "Americas",
 			"salary_band": "band 9",
-			"ratting": 9,
+			"rating": 9,
 			"_action": "checked"
 		}, {
 			"_name": "Yusuf Batliwala",
 			"department": "Technology",
 			"region": "Europe",
 			"salary_band": "band 1",
-			"ratting": 10,
+			"rating": 10,
 			"_action": ""
 		}, {
 			"_name": "Devendra Mahanayak",
 			"department": "Administration",
 			"region": "UAE",
 			"salary_band": "band 2",
-			"ratting": 1,
+			"rating": 1,
 			"_action": "checked"
 		}, {
 			"_name": "Vivek Vishwakarma",
 			"department": "Finance",
 			"region": "Asia",
 			"salary_band": "band 3",
-			"ratting": 2,
+			"rating": 2,
 			"_action": ""
 		}, {
 			"_name": "Nadim Shaikh",
 			"department": "Marketing",
 			"region": "Americas",
 			"salary_band": "band 4",
-			"ratting": 3,
+			"rating": 3,
 			"_action": "checked"
 		}, {
 			"_name": "Bedu Mahapatra",
 			"department": "Technology",
 			"region": "Asia",
 			"salary_band": "band 5",
-			"ratting": 4,
+			"rating": 4,
 			"_action": ""
 		}, {
 			"_name": "Somntah Singh",
 			"department": "Administration",
 			"region": "Americas",
 			"salary_band": "band 6",
-			"ratting": 5,
+			"rating": 5,
 			"_action": "checked"
 		}, {
 			"_name": "Bina Roy",
 			"department": "Finance",
 			"region": "Europe",
 			"salary_band": "band 7",
-			"ratting": 6,
+			"rating": 6,
 			"_action": "checked"
 		}, {
 			"_name": "Joyda Mukharji",
 			"department": "Marketing",
 			"region": "UAE",
 			"salary_band": "band 8",
-			"ratting": 7,
+			"rating": 7,
 			"_action": ""
 		}, {
 			"_name": "Arnab Goswami",
 			"department": "Technology",
 			"region": "Asia",
 			"salary_band": "band 9",
-			"ratting": 8,
+			"rating": 8,
 			"_action": "checked"
 		}, {
 			"_name": "Mahindar Amarnath",
 			"department": "Administration",
 			"region": "Americas",
 			"salary_band": "band 1",
-			"ratting": 9,
+			"rating": 9,
 			"_action": ""
 		}, {
 			"_name": "Saurav Ganguli",
 			"department": "Finance",
 			"region": "Asia",
 			"salary_band": "band 2",
-			"ratting": 10,
+			"rating": 10,
 			"_action": "checked"
 		}, {
 			"_name": "Liyender Pace",
 			"department": "Marketing",
 			"region": "Americas",
 			"salary_band": "band 3",
-			"ratting": 1,
+			"rating": 1,
 			"_action": ""
 		}, {
 			"_name": "Menaka Sharma",
 			"department": "Technology",
 			"region": "Europe",
 			"salary_band": "band 4",
-			"ratting": 2,
+			"rating": 2,
 			"_action": "checked"
 		}, {
 			"_name": "Milkha Singh",
 			"department": "Administration",
 			"region": "UAE",
 			"salary_band": "band 5",
-			"ratting": 3,
+			"rating": 3,
 			"_action": ""
 		}, {
 			"_name": "Rajesh Khanna",
 			"department": "Finance",
 			"region": "Asia",
 			"salary_band": "band 6",
-			"ratting": 4,
+			"rating": 4,
 			"_action": "checked"
 		}, {
 			"_name": "Shaharukh Khan",
 			"department": "Marketing",
 			"region": "Americas",
 			"salary_band": "band 7",
-			"ratting": 5,
+			"rating": 5,
 			"_action": "checked"
 		}, {
 			"_name": "Hemangi Deshmukh",
 			"department": "Technology",
 			"region": "Asia",
 			"salary_band": "band 8",
-			"ratting": 6,
+			"rating": 6,
 			"_action": ""
 		}, {
 			"_name": "Veehan Veram",
 			"department": "Administration",
 			"region": "Americas",
 			"salary_band": "band 9",
-			"ratting": 7,
+			"rating": 7,
 			"_action": "checked"
 		}, {
 			"_name": "Shehenaaz Hasan",
 			"department": "Finance",
 			"region": "Europe",
 			"salary_band": "band 1",
-			"ratting": 8,
+			"rating": 8,
 			"_action": ""
 		}, {
 			"_name": "Mitali Shah",
 			"department": "Marketing",
 			"region": "UAE",
 			"salary_band": "band 2",
-			"ratting": 9,
+			"rating": 9,
 			"_action": ""
 		}, {
 			"_name": "Spruha Vashisht",
 			"department": "Technology",
 			"region": "Asia",
 			"salary_band": "band 3",
-			"ratting": 10,
+			"rating": 10,
 			"_action": "checked"
 		}, {
 			"_name": "Vasant Prasad",
 			"department": "Administration",
 			"region": "Americas",
 			"salary_band": "band 4",
-			"ratting": 1,
+			"rating": 1,
 			"_action": ""
 		}, {
 			"_name": "Mallika Rana",
 			"department": "Finance",
 			"region": "Asia",
 			"salary_band": "band 5",
-			"ratting": 2,
+			"rating": 2,
 			"_action": "checked"
 		}, {
 			"_name": "Mahishma Sen",
 			"department": "Marketing",
 			"region": "Americas",
 			"salary_band": "band 6",
-			"ratting": 3,
+			"rating": 3,
 			"_action": "checked"
 		}, {
 			"_name": "Imtiaz Tamboli",
 			"department": "Technology",
 			"region": "Europe",
 			"salary_band": "band 7",
-			"ratting": 4,
+			"rating": 4,
 			"_action": "checked"
 		}, {
 			"_name": "Neena Shah",
 			"department": "Administration",
 			"region": "UAE",
 			"salary_band": "band 8",
-			"ratting": 5,
+			"rating": 5,
 			"_action": "checked"
 		}, {
 			"_name": "Yashoda Naik",
 			"department": "Finance",
 			"region": "Asia",
 			"salary_band": "band 9",
-			"ratting": 6,
+			"rating": 6,
 			"_action": "checked"
 		}, {
 			"_name": "Nupur Kulkarni",
 			"department": "Marketing",
 			"region": "Americas",
 			"salary_band": "band 1",
-			"ratting": 7,
+			"rating": 7,
 			"_action": "checked"
 		}, {
 			"_name": "Haseena Beg",
 			"department": "Technology",
 			"region": "Asia",
 			"salary_band": "band 2",
-			"ratting": 8,
+			"rating": 8,
 			"_action": "checked"
 		}, {
 			"_name": "Nihar Khan",
 			"department": "Administration",
 			"region": "Americas",
 			"salary_band": "band 3",
-			"ratting": 9,
+			"rating": 9,
 			"_action": "checked"
 		}, {
 			"_name": "Amod Shelar",
 			"department": "Finance",
 			"region": "Europe",
 			"salary_band": "band 4",
-			"ratting": 10,
+			"rating": 10,
 			"_action": "checked"
 		}, {
 			"_name": "Rana Mahaveera",
 			"department": "Marketing",
 			"region": "UAE",
 			"salary_band": "band 5",
-			"ratting": 1,
+			"rating": 1,
 			"_action": "checked"
 		}, {
 			"_name": "James Spears",
 			"department": "Technology",
 			"region": "Asia",
 			"salary_band": "band 6",
-			"ratting": 2,
+			"rating": 2,
 			"_action": "checked"
 		}, {
 			"_name": "Kayla Mahapatra",
 			"department": "Administration",
 			"region": "Americas",
 			"salary_band": "band 7",
-			"ratting": 3,
+			"rating": 3,
 			"_action": "checked"
 		}, {
 			"_name": "Nevedita Khanna",
 			"department": "Finance",
 			"region": "Asia",
 			"salary_band": "band 8",
-			"ratting": 4,
+			"rating": 4,
 			"_action": "checked"
 		}, {
 			"_name": "Raman Jhaa",
 			"department": "Marketing",
 			"region": "Americas",
 			"salary_band": "band 9",
-			"ratting": 5,
+			"rating": 5,
 			"_action": "checked"
 		}, {
 			"_name": "Vidula Pillayi",
 			"department": "Technology",
 			"region": "Europe",
 			"salary_band": "band 1",
-			"ratting": 6,
+			"rating": 6,
 			"_action": "checked"
 		}, {
 			"_name": "Vilas Dhobale",
 			"department": "Administration",
 			"region": "UAE",
 			"salary_band": "band 2",
-			"ratting": 7,
+			"rating": 7,
 			"_action": "checked"
 		}, {
 			"_name": "Rahul Jain",
 			"department": "Finance",
 			"region": "Asia",
 			"salary_band": "band 3",
-			"ratting": 8,
+			"rating": 8,
 			"_action": "checked"
 		}, {
 			"_name": "Yashodeep Beldar",
 			"department": "Marketing",
 			"region": "Americas",
 			"salary_band": "band 4",
-			"ratting": 9,
+			"rating": 9,
 			"_action": "checked"
 		}, {
 			"_name": "Shobharam Siddhu",
 			"department": "Technology",
 			"region": "Asia",
 			"salary_band": "band 5",
-			"ratting": 10,
+			"rating": 10,
 			"_action": "checked"
 		}, {
 			"_name": "Niranjan Kumar",
 			"department": "Administration",
 			"region": "Americas",
 			"salary_band": "band 6",
-			"ratting": 1,
+			"rating": 1,
 			"_action": "checked"
 		}, {
 			"_name": "Vedant Seth",
 			"department": "Finance",
 			"region": "Europe",
 			"salary_band": "band 7",
-			"ratting": 2,
+			"rating": 2,
 			"_action": "checked"
 		}, {
 			"_name": "Abhjeet Kadam",
 			"department": "Marketing",
 			"region": "UAE",
 			"salary_band": "band 8",
-			"ratting": 3,
+			"rating": 3,
 			"_action": "checked"
 		}, {
 			"_name": "Mallik Nawab",
 			"department": "Technology",
 			"region": "Asia",
 			"salary_band": "band 9",
-			"ratting": 4,
+			"rating": 4,
 			"_action": "checked"
 		}, {
 			"_name": "Ahemed Suleman",
 			"department": "Administration",
 			"region": "Americas",
 			"salary_band": "band 1",
-			"ratting": 5,
+			"rating": 5,
 			"_action": "checked"
 		}, {
 			"_name": "Amana Varma",
 			"department": "Finance",
 			"region": "Asia",
 			"salary_band": "band 2",
-			"ratting": 6,
+			"rating": 6,
 			"_action": "checked"
 		}, {
 			"_name": "Aayush Sodhi",
 			"department": "Marketing",
 			"region": "Americas",
 			"salary_band": "band 3",
-			"ratting": 7,
+			"rating": 7,
 			"_action": "checked"
 		}, {
 			"_name": "Brijesh Harnam",
 			"department": "Technology",
 			"region": "Europe",
 			"salary_band": "band 4",
-			"ratting": 8,
+			"rating": 8,
 			"_action": "checked"
 		}, {
 			"_name": "Shreyas Somani",
 			"department": "Administration",
 			"region": "UAE",
 			"salary_band": "band 5",
-			"ratting": 9,
+			"rating": 9,
 			"_action": "checked"
 		}, {
 			"_name": "Mehul Modi",
 			"department": "Finance",
 			"region": "Asia",
 			"salary_band": "band 6",
-			"ratting": 10,
+			"rating": 10,
 			"_action": "checked"
 		}, {
 			"_name": "Kiyaara Goyal",
 			"department": "Marketing",
 			"region": "Americas",
 			"salary_band": "band 7",
-			"ratting": 1,
+			"rating": 1,
 			"_action": "checked"
 		}, {
 			"_name": "Manmohan Joshi",
 			"department": "Technology",
 			"region": "Asia",
 			"salary_band": "band 8",
-			"ratting": 2,
+			"rating": 2,
 			"_action": "checked"
 		}, {
 			"_name": "Mankilal Sahaay",
 			"department": "Administration",
 			"region": "Americas",
 			"salary_band": "band 9",
-			"ratting": 3,
+			"rating": 3,
 			"_action": "checked"
 		}, {
 			"_name": "Yogendra Gorle",
 			"department": "Finance",
 			"region": "Europe",
 			"salary_band": "band 1",
-			"ratting": 4,
+			"rating": 4,
 			"_action": "checked"
 		}, {
 			"_name": "Chetan Patel",
 			"department": "Marketing",
 			"region": "UAE",
 			"salary_band": "band 2",
-			"ratting": 5,
+			"rating": 5,
 			"_action": "checked"
 		}, {
 			"_name": "Naveen Mittal",
 			"department": "Technology",
 			"region": "Asia",
 			"salary_band": "band 3",
-			"ratting": 6,
+			"rating": 6,
 			"_action": "checked"
 		}, {
 			"_name": "Rushabh Jindaal",
 			"department": "Administration",
 			"region": "Americas",
 			"salary_band": "band 4",
-			"ratting": 7,
+			"rating": 7,
 			"_action": "checked"
 		}, {
 			"_name": "Heena Khushrang",
 			"department": "Finance",
 			"region": "Asia",
 			"salary_band": "band 5",
-			"ratting": 8,
+			"rating": 8,
 			"_action": "checked"
 		}, {
 			"_name": "Khushvant Sinha",
 			"department": "Marketing",
 			"region": "Americas",
 			"salary_band": "band 6",
-			"ratting": 9,
+			"rating": 9,
 			"_action": "checked"
 		}, {
 			"_name": "Vedant Kaushik",
 			"department": "Technology",
 			"region": "Europe",
 			"salary_band": "band 7",
-			"ratting": 10,
+			"rating": 10,
 			"_action": "checked"
 		}, {
 			"_name": "Yateen Khan",
 			"department": "Administration",
 			"region": "UAE",
 			"salary_band": "band 8",
-			"ratting": 1,
+			"rating": 1,
 			"_action": "checked"
 		}, {
 			"_name": "Avasth Daas",
 			"department": "Finance",
 			"region": "Asia",
 			"salary_band": "band 9",
-			"ratting": 2,
+			"rating": 2,
 			"_action": "checked"
 		}, {
 			"_name": "Nitant Kumar",
 			"department": "Marketing",
 			"region": "Americas",
 			"salary_band": "band 1",
-			"ratting": 3,
+			"rating": 3,
 			"_action": "checked"
 		}, {
 			"_name": "Reeta Nayak",
 			"department": "Technology",
 			"region": "Asia",
 			"salary_band": "band 2",
-			"ratting": 4,
+			"rating": 4,
 			"_action": "checked"
 		}, {
 			"_name": "Navartna Chhabra",
 			"department": "Administration",
 			"region": "Americas",
 			"salary_band": "band 3",
-			"ratting": 5,
+			"rating": 5,
 			"_action": "checked"
 		}, {
 			"_name": "Naneet Bhagyodaya",
 			"department": "Finance",
 			"region": "Europe",
 			"salary_band": "band 4",
-			"ratting": 6,
+			"rating": 6,
 			"_action": "checked"
 		}, {
 			"_name": "Bhaavana Mehta",
 			"department": "Marketing",
 			"region": "UAE",
 			"salary_band": "band 5",
-			"ratting": 7,
+			"rating": 7,
 			"_action": ""
 		}, {
 			"_name": "Neeraj Gulaati",
 			"department": "Technology",
 			"region": "Asia",
 			"salary_band": "band 6",
-			"ratting": 8,
+			"rating": 8,
 			"_action": "checked"
 		}, {
 			"_name": "Vrajraj Shah",
 			"department": "Administration",
 			"region": "Americas",
 			"salary_band": "band 7",
-			"ratting": 9,
+			"rating": 9,
 			"_action": ""
 		}, {
 			"_name": "Nishant Sinha",
 			"department": "Finance",
 			"region": "Asia",
 			"salary_band": "band 8",
-			"ratting": 10,
+			"rating": 10,
 			"_action": ""
 		}, {
 			"_name": "Tinku Tathawade",
 			"department": "Marketing",
 			"region": "Americas",
 			"salary_band": "band 9",
-			"ratting": 1,
+			"rating": 1,
 			"_action": "checked"
 		}, {
 			"_name": "Neha Dhilon",
 			"department": "Technology",
 			"region": "Europe",
 			"salary_band": "band 1",
-			"ratting": 2,
+			"rating": 2,
 			"_action": ""
 		}, {
 			"_name": "Prashant Patil",
 			"department": "Administration",
 			"region": "UAE",
 			"salary_band": "band 2",
-			"ratting": 3,
+			"rating": 3,
 			"_action": "checked"
 		}, {
 			"_name": "Neerav Kumar",
 			"department": "Finance",
 			"region": "Asia",
 			"salary_band": "band 3",
-			"ratting": 4,
+			"rating": 4,
 			"_action": ""
 		}, {
 			"_name": "Nihaal Aaryan",
 			"department": "Marketing",
 			"region": "Americas",
 			"salary_band": "band 4",
-			"ratting": 5,
+			"rating": 5,
 			"_action": "checked"
 		}, {
 			"_name": "Pramod Nimbalkar",
 			"department": "Technology",
 			"region": "Asia",
 			"salary_band": "band 5",
-			"ratting": 6,
+			"rating": 6,
 			"_action": "checked"
 		}, {
 			"_name": "Joytika Saathe",
 			"department": "Administration",
 			"region": "Americas",
 			"salary_band": "band 6",
-			"ratting": 7,
+			"rating": 7,
 			"_action": ""
 		}, {
 			"_name": "Meetesh Kawal",
 			"department": "Finance",
 			"region": "Europe",
 			"salary_band": "band 7",
-			"ratting": 8,
+			"rating": 8,
 			"_action": "checked"
 		}, {
 			"_name": "Yogiraj Girase",
 			"department": "Marketing",
 			"region": "UAE",
 			"salary_band": "band 8",
-			"ratting": 9,
+			"rating": 9,
 			"_action": ""
 		}, {
 			"_name": "Narayan Shankar",
 			"department": "Technology",
 			"region": "Asia",
 			"salary_band": "band 9",
-			"ratting": 10,
+			"rating": 10,
 			"_action": ""
 		}, {
 			"_name": "Hiren Bhatiya",
 			"department": "Administration",
 			"region": "Americas",
 			"salary_band": "band 1",
-			"ratting": 1,
+			"rating": 1,
 			"_action": "checked"
 		}, {
 			"_name": "Ayyub Nawaab",
 			"department": "Finance",
 			"region": "Asia",
 			"salary_band": "band 2",
-			"ratting": 2,
+			"rating": 2,
 			"_action": ""
 		}, {
 			"_name": "Nayan Meherotra",
 			"department": "Marketing",
 			"region": "Americas",
 			"salary_band": "band 3",
-			"ratting": 3,
+			"rating": 3,
 			"_action": ""
 		}, {
 			"_name": "Shyama Singh",
 			"department": "Technology",
 			"region": "Europe",
 			"salary_band": "band 4",
-			"ratting": 4,
+			"rating": 4,
 			"_action": ""
 		}, {
 			"_name": "Naresh Kumar",
 			"department": "Administration",
 			"region": "UAE",
 			"salary_band": "band 5",
-			"ratting": 5,
+			"rating": 5,
 			"_action": "checked"
 		}, {
 			"_name": "Yogita Acharya",
 			"department": "Finance",
 			"region": "Asia",
 			"salary_band": "band 6",
-			"ratting": 6,
+			"rating": 6,
 			"_action": ""
 		}, {
 			"_name": "Nikhil Kelkar",
 			"department": "Marketing",
 			"region": "Americas",
 			"salary_band": "band 7",
-			"ratting": 7,
+			"rating": 7,
 			"_action": ""
 		}, {
 			"_name": "Sangram Prabhu",
 			"department": "Technology",
 			"region": "Asia",
 			"salary_band": "band 8",
-			"ratting": 8,
+			"rating": 8,
 			"_action": "checked"
 		}, {
 			"_name": "Saksham Naidu",
 			"department": "Administration",
 			"region": "Americas",
 			"salary_band": "band 9",
-			"ratting": 9,
+			"rating": 9,
 			"_action": ""
 		}, {
 			"_name": "Sanmaan Chougule",
 			"department": "Finance",
 			"region": "Europe",
 			"salary_band": "band 1",
-			"ratting": 10,
+			"rating": 10,
 			"_action": "checked"
 		}, {
 			"_name": "Baban Naath",
 			"department": "Marketing",
 			"region": "UAE",
 			"salary_band": "band 2",
-			"ratting": 1,
+			"rating": 1,
 			"_action": ""
 		}
 	]
