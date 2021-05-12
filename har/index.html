@@ -1,0 +1,335 @@
+<!doctype html>
+<html ng-app="myApp" lang="en" ng-init="data={}">
+  <head>
+	<title>HAR Viewer</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/pretty-print-json@1.0/dist/pretty-print-json.css>
+	
+	<style>
+
+		.fill { 
+			min-height: 100%;
+			height: 100vh;
+		}
+		.pages{background-color: orange;height: 100%;}
+		.pagelist{overflow: hidden;}
+	</style>
+</head>
+  <body ng-controller="myController">
+	<div class="fill container-fluid" ng-init='init("abc")'>
+		<div class="row" style="height: 100%;">
+			<div class="pages col-lg-2">
+				<h2>HAR Viewer</h2>
+				<hr/>
+				<div class="form-group">
+				  <label for="">Select HAR File</label>
+				  <input type="file" accept =".har" class="form-control-file" id="fileInput" onchange="angular.element(this).scope().fileNameChanged(this)" placeholder="Select HAR File">
+				</div>
+
+				<div class="list-group">
+					<a style="overflow: hidden;" ng-repeat='page in data.har.log.pages' ng-click="selectPage($event,page)" href="#" class="list-group-item list-group-item-action list-group-item-primary">{{page.title}}</a>
+				</div>
+				<button ng-click="loadAllEntries()" class='btn btn-primary'>Load All Pages Entries</button>
+			</div>
+			<div class="col-lg-6 table-responsive" style="max-height: 100% !important; overflow: scroll;">
+				
+				<div class="sticky-top" style="background-color: white;width: 100%;">
+					
+					<h3>Filter</h3>
+					<div class="row">
+						
+						<div class="col col-lg-3">
+							<input type="text" ng-init="search.method=''" ng-model="search.method" name="method" id="method" class="form-control form-control-sm" placeholder="Method">
+						</div>
+						<div class="col col-lg-3">
+							 <select ng-init="seTypes = reTypes[0]" multiple ng-model="seTypes" class="form-control">
+								<option ng-repeat="reType in reTypes">{{reType}}</option>
+							  </select>
+						</div>
+						<div class="col col-lg-3">
+							<input type="text" ng-init="search.hostname=''"  ng-model="search.hostname" name="domain" id="domain" class="form-control form-control-sm" placeholder="Domain">
+						</div>
+					</div><br/>
+				</div>
+					
+				<table class="table table-hover table-striped table-bordered table-sm">
+					<thead class="thead-dark">
+						<tr>
+							<th></th>
+							<th>Method</th>
+							<th>Type</th>
+							<th>Domain</th>
+							<th>Path</th>
+							<th>QueryString</th>
+							<th>URL</th>
+						</tr>
+						</thead>
+						<tbody>
+							<tr  tabindex='{{$index}}' style="cursor: pointer;" ng-click="openEntryDetails($event,entry)" ng-repeat='entry in data.currentEntries | filter:filterByMulti'>
+								<td>{{$index + 1}}</td>
+								<td>{{entry.method}}</td>
+								<td>{{entry._resourceType}}</td>
+								<td>{{entry.hostname}}</td>
+								<td>{{entry.path}}</td>
+								<td>{{entry.searchParams}}</td>
+								<td>{{entry.request.url}}</td>
+							</tr>
+						</tbody>
+				</table>
+			</div>
+			<div class="details col col-lg-4">
+				<div id="accordion" style="max-height: 100vh;overflow:auto;">
+					<br/>
+					<button ng-click="copySelectedRequest()" class="btn btn-primary">Copy Selected request</button>
+					<button ng-click="copyFilteredRequest()" class="btn btn-primary">Copy All Filtered request</button>
+					<br/><br/>
+					<div class="card">
+					  <div class="card-header">
+						<a class="card-link" data-toggle="collapse" href="#collapseOne">
+						  Request Headers
+						</a>
+					  </div>
+					  <div id="collapseOne" class="collapse show" data-parent="#accordion">
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-sm">
+									<tr ng-repeat="header in data.currentRequest.request.headers">
+										<td style="white-space: nowrap;" class="text-right"><b>{{header.name}}:</b></td>
+										<td>{{header.value}}</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					  </div>
+					</div>
+
+					<div class="card">
+						<div class="card-header">
+						  <a class="card-link" data-toggle="collapse" href="#collapseFour">
+							Request Body
+						  </a>
+						</div>
+						<div id="collapseFour" class="collapse" data-parent="#accordion">
+						  <div class="card-body">
+							<pre id="requestJson">
+
+							</pre>
+						  </div>
+						</div>
+					</div>
+				  
+					<div class="card">
+					  <div class="card-header">
+						<a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+						  Response Headers
+						</a>
+					  </div>
+					  <div id="collapseTwo" class="collapse" data-parent="#accordion">
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-sm">
+									<tr ng-repeat="header in data.currentRequest.response.headers">
+										<td style="white-space: nowrap;" class="text-right"><b>{{header.name}}:</b></td>
+										<td>{{header.value}}</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					  </div>
+					</div>
+				  
+					<div class="card">
+					  <div class="card-header">
+						<a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+						  Response Body
+						</a>
+					  </div>
+					  <div id="collapseThree" class="collapse" data-parent="#accordion">
+						<div class="card-body">
+							<pre id="responseJson">
+
+							</pre>
+						</div>
+					  </div>
+					</div>
+				  
+				  </div>
+			</div>
+		</div>
+	</div>
+	<script type="text/ng-template" id="modal.html">
+		<h1>modal</h1>
+	  </script> 
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src=https://cdn.jsdelivr.net/npm/pretty-print-json@1.0/dist/pretty-print-json.min.js></script>
+	<script>
+
+		var app = angular.module('myApp',[]);
+		
+		app.controller('myController', ['$scope', '$window', function($scope, $window) {
+			$scope.selectPage=function($event,page){
+				$scope.data.currentEntries = $scope.data.har.log.entries.filter(entry => entry.pageref==page.id)
+				$scope.reTypes = Array.from(new Set($scope.data.currentEntries.map(x => x._resourceType)))
+				jQuery('a').removeClass("active");
+				jQuery($event.target).addClass("active");
+			}
+			$scope.loadAllEntries = function(){
+				$scope.data.currentEntries = $scope.data.har.log.entries
+				$scope.reTypes = Array.from(new Set($scope.data.currentEntries.map(x => x._resourceType)))
+			}
+			$scope.openEntryDetails = function($event,entry){
+				$scope.data.currentRequest = entry
+				try{
+					jQuery('#responseJson').html(prettyPrintJson.toHtml(JSON.parse(entry.response.content.text)));
+				}catch(e){
+					if(entry.response.content.text)
+						jQuery('#responseJson').text(entry.response.content.text)
+					else
+					jQuery('#responseJson').text("")
+				}
+				try{
+					jQuery('#requestJson').html(prettyPrintJson.toHtml(JSON.parse(entry.request.postData.text)));
+				}catch(e){
+					if(entry.request.postData)
+						jQuery('#requestJson').text(entry.request.postData.text)
+					else
+					jQuery('#requestJson').text("")
+				}
+
+				jQuery('tr').removeClass("table-primary");
+				jQuery($event.target).parent("tr").addClass("table-primary");
+			}
+			
+			$scope.copySelectedRequest=function(){
+				if($scope.data.currentRequest){
+				let clipObject = "";
+				clipObject+=`header = ${$window.getKeyValString($scope.currentRequest.request.headers)}\r\n
+body = ${$window.getBody($scope.data.currentRequest.request)}\r\n
+${$window.getMethod($scope.data.currentRequest.request)}\r\n`
+						
+				$window.copyText(clipObject)
+				alert("Request is copied...!")
+				}else{
+					alert("Select a request to copy!!!")
+				}
+				
+			}
+
+			$scope.copyFilteredRequest=function(){
+				if($scope.data.currentEntries!=undefined){
+				let filteredData = $scope.data.currentEntries.filter((item)=>$scope.filterByMulti(item));
+				if(filteredData.length>0){
+					let clipObject = "";
+					filteredData.forEach(function(item){
+						clipObject+=`header = ${$window.getKeyValString(item.request.headers)}\r\n
+${$window.getMethod(item.request)}\r\n`
+					})
+					$window.copyText(clipObject)
+					alert("Request is copied...!")
+				}else{
+					alert("no enries to copy!!!")
+				}
+			}else{
+				alert("no enries to copy!!!")
+			}
+			}
+
+			$scope.filterByMulti=function(item){
+				if($scope.seTypes){
+					return $scope.seTypes.indexOf(item._resourceType)>=0 && item.hostname.includes($scope.search.hostname)
+				}
+				return true;
+			}
+
+			$scope.fileNameChanged=function($event){
+				console.log($event.files[0])
+				const reader = new FileReader()
+				reader.onload = $scope.handleFileLoad;
+				reader.readAsText(event.target.files[0])
+			}
+
+			$scope.handleFileLoad=function(event){
+				console.log(event);
+  				let har = JSON.parse(event.target.result);
+				har.log.entries.forEach(function(obj) {
+					let url = new URL(obj.request.url)
+					obj.hostname = url.hostname
+					obj.path = url.pathname
+					obj.searchParams = url.searchParams
+					obj.method = obj.request.method
+				});
+				$scope.data={}
+				$scope.reTypes=undefined
+				$scope.data.har = har;
+				$scope.$apply();
+			}
+
+		}]);
+
+		function copyText(text) {
+				var dummy = document.createElement("pre");
+				dummy.setAttribute('id','clipObj')
+				dummy.innerText = text;
+				document.body.appendChild(dummy);
+				if (document.selection) { // IE
+					var range = document.body.createTextRange();
+					range.moveToElementText(dummy);
+					range.select();
+				} else if (window.getSelection) {
+					var range = document.createRange();
+					range.selectNode(dummy);
+					window.getSelection().removeAllRanges();
+					window.getSelection().addRange(range);
+				}
+				document.execCommand("copy");
+				document.body.removeChild(dummy);
+			}
+		function getBody(request){
+			if(request.postData){
+				if(request.postData.mimeType.includes("form"))
+					return getKeyValString(request.postData.params);
+				else
+					return `'${request.postData.text}'`
+			}
+			return "''"
+		}
+
+		function getMethod(request){
+			let objUrl = new URL(request.url)
+			switch(request.method.toLowerCase()){
+				case 'get':
+				return `res = client.${request.method.toLowerCase()}("${objUrl.pathname}${objUrl.search}",host,header,res.execTime);`
+				default:
+				return `body = ${getBody(request)}\r\nres = client.${request.method.toLowerCase()}("${objUrl.pathname}${objUrl.search}",host,header,body,res.execTime);`
+			}
+			
+		}
+
+		function getKeyValString(pairs){
+			let retPair = {}
+			pairs.forEach(function(pair){
+				retPair[pair.name]=pair.value
+			})
+			return JSON.stringify(retPair,null,2)
+		}
+
+		$('.firstpan').click(function(){
+			$('.pages').removeClass("col-lg-2");
+			$('.pages').addClass("col-lg-1")
+			$('.details').removeClass("col-lg-4")
+			$('.details').addClass("col-lg-5")
+		})
+	</script>
+</body>
+</html>
