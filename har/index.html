@@ -214,7 +214,7 @@
 			$scope.copySelectedRequest=function(){
 				if($scope.data.currentRequest){
 				let clipObject = "";
-				clipObject+=`header = ${$window.getKeyValString($scope.currentRequest.request.headers)}\r\n
+				clipObject+=`header = ${$window.getKeyValString($scope.data.currentRequest.request.headers)}\r\n
 body = ${$window.getBody($scope.data.currentRequest.request)}\r\n
 ${$window.getMethod($scope.data.currentRequest.request)}\r\n`
 						
@@ -309,9 +309,9 @@ ${$window.getMethod(item.request)}\r\n`
 			let objUrl = new URL(request.url)
 			switch(request.method.toLowerCase()){
 				case 'get':
-				return `res = client.${request.method.toLowerCase()}("${objUrl.pathname}${objUrl.search}",host,header,res.execTime);`
+				return `res = client.${request.method.toLowerCase()}("${objUrl.pathname}${objUrl.search}",host,header,res.execTime,tags);`
 				default:
-				return `body = ${getBody(request)}\r\nres = client.${request.method.toLowerCase()}("${objUrl.pathname}${objUrl.search}",host,header,body,res.execTime);`
+				return `body = ${getBody(request)}\r\nres = client.${request.method.toLowerCase()}("${objUrl.pathname}${objUrl.search}",host,body,header,res.execTime,tags);`
 			}
 			
 		}
