@@ -215,7 +215,6 @@
 				if($scope.data.currentRequest){
 				let clipObject = "";
 				clipObject+=`header = ${$window.getKeyValString($scope.data.currentRequest.request.headers)}\r\n
-body = ${$window.getBody($scope.data.currentRequest.request)}\r\n
 ${$window.getMethod($scope.data.currentRequest.request)}\r\n`
 						
 				$window.copyText(clipObject)
@@ -300,7 +299,7 @@ ${$window.getMethod(item.request)}\r\n`
 				if(request.postData.mimeType.includes("form"))
 					return getKeyValString(request.postData.params);
 				else
-					return `'${request.postData.text}'`
+					return `\`${request.postData.text}\``
 			}
 			return "''"
 		}
@@ -309,9 +308,9 @@ ${$window.getMethod(item.request)}\r\n`
 			let objUrl = new URL(request.url)
 			switch(request.method.toLowerCase()){
 				case 'get':
-				return `res = client.${request.method.toLowerCase()}("${objUrl.pathname}${objUrl.search}",host,header,res.execTime,tags);`
+				return `res = client.${request.method.toLowerCase()}(\`${objUrl.pathname}${objUrl.search}\`,host,header,res.execTime,tags);`
 				default:
-				return `body = ${getBody(request)}\r\nres = client.${request.method.toLowerCase()}("${objUrl.pathname}${objUrl.search}",host,body,header,res.execTime,tags);`
+				return `body = ${getBody(request)}\r\nres = client.${request.method.toLowerCase()}(\`${objUrl.pathname}${objUrl.search}\`,host,body,header,res.execTime,tags);`
 			}
 			
 		}
