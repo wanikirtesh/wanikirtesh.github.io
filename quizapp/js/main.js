@@ -1,11 +1,14 @@
 var questUrl = "https://script.google.com/macros/s/AKfycbzzJyZ-G6NZpTol-8eHlzdCJPHejzfBlaJLkYzIK7oJKOjkmCiazWW3AE5sWtKSiSE/exec?action=read&table=Quiz1";
-var objQuest;
+var quizUrl = "https://script.google.com/macros/s/AKfycbzzJyZ-G6NZpTol-8eHlzdCJPHejzfBlaJLkYzIK7oJKOjkmCiazWW3AE5sWtKSiSE/exec?action=read&table=Quiz";
+var objQuest,level,description,duration;
+var objResult = {};
+objResult.description = [];
 var isFinished = false;
+var levels = {"low":1000,"medium":800,"high":500}
 
 function submitForm(){
   var name = document.getElementById("name");
   localStorage.setItem("name", name.value);
-
   var email= document.getElementById("email");
   localStorage.setItem("email", email.value);
 
@@ -19,10 +22,9 @@ function submitForm(){
       $("#container").load("counter.html",function (){
         startCounter(3,500,function (){
           startQuiz(1);
-          startTimer(1);
+          startTimer(duration);
         });
       });
-
     },
     error: function(xhr, status, error) {
       console.log('Error:', error);
@@ -52,7 +54,6 @@ function startTimer(minutes) {
     var minutes = Math.floor((timeDifference / 1000 / 60) % 60);
     var seconds = Math.floor((timeDifference / 1000) % 60);
 
-    // Format the time values to ensure leading zeros
     var formattedTime = formatTime(hours) + ':' + formatTime(minutes) + ':' + formatTime(seconds);
 
     timerElement.text(formattedTime);
@@ -68,3 +69,25 @@ function startTimer(minutes) {
     return time < 10 ? '0' + time : time; // Add leading zero if necessary
   }
 }
+
+$(document).ready(function(){
+  $.ajax({
+    url: quizUrl, // Replace with your API URL
+    method: 'GET',
+    dataType: 'json',
+    success: function(response) {
+      let activeQuiz = response.data.rows.filter(x => x.IsActive);
+      if(activeQuiz.length===1) {
+        level =activeQuiz[0].Level;
+        description = activeQuiz[0].Description;
+        duration = activeQuiz[0].Duration;
+        $('#container').load("login.html")
+      }else{
+        $('#container').load("noQuiz.html")
+      }
+    },
+    error: function(xhr, status, error) {
+      console.log('Error:', error);
+    }
+  });
+})
