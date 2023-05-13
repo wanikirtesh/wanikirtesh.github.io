@@ -1,0 +1,29 @@
+<script>
+  var questNo;
+  function loadQuestion(index){
+    if(index===1) {
+      $('.quest').prepend("<div>" + objQuest.descrption + "</div>")
+    }else{
+      $('.quest').prepend("<input type='number' placeholder='Your answer' id='ans"+index+"'>");
+    }
+    questNo = index;
+  }
+
+  $('#submitQuest').click(function (){
+    if(objQuest.data.count >= questNo && !isFinished) {
+      $("#container").load("counter.html", function () {
+        let curQuest = objQuest.data.rows[questNo - 1]
+        let quest = curQuest.question.split(',')
+        loadCounter(quest,500, function () {
+          startQuiz(++questNo);
+        });
+      });
+    }else{
+      isFinished = true;
+      $("#container").load("finish.html");
+    }
+  })
+</script>
+<div class="quest">
+  <button id="submitQuest">Submit</button>
+</div>
