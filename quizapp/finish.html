@@ -1,3 +1,17 @@
 <div>
   Thanks for participating!
+
+  <div>Attempted : <span id="attempted"></span></div>
+  <div>Correct : <span id="correct"></span></div>
+  <div>Skipped : <span id="skipped"></span></div>
+  <div id="resultJson"></div>
+
 </div>
+<script>
+  $(document).ready(function (){
+    $("#attempted").text(objResult.description.length)
+    $("#correct").text(objResult.description.filter(x => x.correct).length)
+    $("#skipped").text(objResult.description.filter(x => x.answer === "").length)
+    $("#resultJson").text(JSON.stringify(objResult))
+  })
+</script>

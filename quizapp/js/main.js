@@ -44,24 +44,23 @@ function startTimer(minutes) {
   var endTime = new Date(); // Set the end time here
   endTime.setMinutes(endTime.getMinutes() + minutes); // Example: countdown for 10 minutes
 
-  setInterval(updateTimer, 1000); // Update the timer every second
+  var timerTick = setInterval(updateTimer, 1000); // Update the timer every second
 
   function updateTimer() {
     var currentTime = new Date().getTime();
     var timeDifference = endTime - currentTime;
-
     var hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
     var minutes = Math.floor((timeDifference / 1000 / 60) % 60);
     var seconds = Math.floor((timeDifference / 1000) % 60);
-
     var formattedTime = formatTime(hours) + ':' + formatTime(minutes) + ':' + formatTime(seconds);
-
     timerElement.text(formattedTime);
 
-    if (timeDifference < 0) {
-      clearInterval(updateTimer);
+    if (timeDifference < 0 || isFinished) {
+      clearInterval(timerTick);
+      if(!isFinished) {
+        timerElement.text("00:00:00");
+      }
       isFinished = true;
-      timerElement.text("00:00:00"); // Display "00:00:00" when the countdown is finished
     }
   }
 

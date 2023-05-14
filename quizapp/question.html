@@ -2,7 +2,6 @@
   var questNo;
   function loadQuestion(index){
     if(index===1) {
-      debugger
       $('#submitQuest').text("Start")
       $('.quest').prepend("<div>" + description + "</div>")
     }else{
@@ -14,12 +13,12 @@
 
   $('#submitQuest').click(function (){
     if(objQuest.data.count >= questNo && !isFinished) {
-      debugger
+
       if(questNo>1){
         let currentResult = {}
         currentResult.answer = $("#ans").prop("value")
         currentResult.correctAnswer = objQuest.data.rows[questNo-2].answer
-        currentResult.passed = (currentResult.answer == currentResult.correctAnswer)
+        currentResult.correct = (currentResult.answer == currentResult.correctAnswer)
         objResult.description.push(currentResult)
       }
       $("#container").load("counter.html", function () {
@@ -30,8 +29,15 @@
         });
       });
     }else{
+      if(!isFinished){
+        let currentResult = {}
+        currentResult.answer = $("#ans").prop("value")
+        currentResult.correctAnswer = objQuest.data.rows[questNo-2].answer
+        currentResult.correct = (currentResult.answer == currentResult.correctAnswer)
+        objResult.description.push(currentResult)
+      }
       isFinished = true;
-      debugger
+
       $("#container").load("finish.html");
     }
   })

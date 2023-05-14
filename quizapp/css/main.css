@@ -369,3 +369,12 @@ font-size: 25vh
   text-align: center;
 }
 
+.innerContainer{
+  padding: 10px;
+
+}
+
+.form-control{
+  padding: 5px;
+}
+
