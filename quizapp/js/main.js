@@ -1,5 +1,5 @@
-var questUrl = "https://script.google.com/macros/s/AKfycbzzJyZ-G6NZpTol-8eHlzdCJPHejzfBlaJLkYzIK7oJKOjkmCiazWW3AE5sWtKSiSE/exec?action=read&table=Quiz1";
-var quizUrl = "https://script.google.com/macros/s/AKfycbzzJyZ-G6NZpTol-8eHlzdCJPHejzfBlaJLkYzIK7oJKOjkmCiazWW3AE5sWtKSiSE/exec?action=read&table=Quiz";
+const questUrl = "https://script.google.com/macros/s/AKfycbzzJyZ-G6NZpTol-8eHlzdCJPHejzfBlaJLkYzIK7oJKOjkmCiazWW3AE5sWtKSiSE/exec?action=read&table=Quiz1";
+const quizUrl = "https://script.google.com/macros/s/AKfycbzzJyZ-G6NZpTol-8eHlzdCJPHejzfBlaJLkYzIK7oJKOjkmCiazWW3AE5sWtKSiSE/exec?action=read&table=Quiz";
 var objQuest,level,description,duration;
 var objResult = {};
 objResult.description = [];
@@ -39,7 +39,6 @@ function startQuiz(qNo){
       })
     });
   });
-
 }
 
 

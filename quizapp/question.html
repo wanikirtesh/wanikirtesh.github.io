@@ -7,29 +7,27 @@
   }
 
   $('#submitQuest').click(function (){
-    debugger
     if(objQuest.data.count > (questNo+1) && !isFinished) {
       if(questNo>=0){
-        let currentResult = {}
-        currentResult.answer = $("#ans").prop("value")
-        currentResult.correctAnswer = objQuest.data.rows[questNo].answer
-        currentResult.correct = (currentResult.answer == currentResult.correctAnswer)
-        objResult.description.push(currentResult)
+        recordResult()
       }
       startQuiz(++questNo);
     }else{
       if(!isFinished){
-        let currentResult = {}
-        currentResult.answer = $("#ans").prop("value")
-        currentResult.correctAnswer = objQuest.data.rows[questNo-2].answer
-        currentResult.correct = (currentResult.answer == currentResult.correctAnswer)
-        objResult.description.push(currentResult)
+        recordResult()
       }
       isFinished = true;
-
       $("#container").load("finish.html");
     }
   })
+
+  function recordResult(){
+    let currentResult = {}
+    currentResult.answer = $("#ans").prop("value")
+    currentResult.correctAnswer = objQuest.data.rows[questNo].answer
+    currentResult.correct = (currentResult.answer.toString() === currentResult.correctAnswer.toString())
+    objResult.description.push(currentResult)
+  }
 </script>
 <div class="quest">
   <button id="submitQuest">Submit</button>
