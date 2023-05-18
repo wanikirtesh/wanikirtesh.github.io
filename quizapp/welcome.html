@@ -1,0 +1,14 @@
+<div>Welcome to Quiz</div>
+<div id="desc"></div>
+<button id="startQuiz">Start Quiz</button>
+
+<script>
+    function loadQuizDescription(){
+        $('#desc').text(description)
+    }
+
+    $('#startQuiz').click(function (){
+        startTimer(duration)
+        startQuiz(0)
+    })
+</script>

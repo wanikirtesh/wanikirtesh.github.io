@@ -19,13 +19,10 @@ function submitForm(){
     success: function(response) {
       objQuest = response;
       $("#signup").hide();
-      $("#container").load("counter.html",function (){
-        startCounter(3,500,function (){
-          startQuiz(1);
-          startTimer(duration);
-        });
+      $("#container").load("welcome.html",function (){
+        loadQuizDescription();
       });
-    },
+     },
     error: function(xhr, status, error) {
       console.log('Error:', error);
     }
@@ -33,9 +30,16 @@ function submitForm(){
 }
 
 function startQuiz(qNo){
-  $("#container").load("question.html",function (){
-    loadQuestion(qNo);
-  })
+  $("#container").load("counter.html", function () {
+    let curQuest = objQuest.data.rows[qNo]
+    let quest = curQuest.question.split(',')
+    loadCounter(quest,levels[level.toLowerCase()], function () {
+      $("#container").load("question.html",function (){
+        loadQuestion(qNo);
+      })
+    });
+  });
+
 }
 
 
@@ -61,6 +65,7 @@ function startTimer(minutes) {
         timerElement.text("00:00:00");
       }
       isFinished = true;
+      $("#container").load("timeout.html");
     }
   }
 
