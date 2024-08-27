@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinning Wheel Selector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wheel-container">
+        <canvas id="wheelCanvas" width="600" height="600"></canvas>
+        <button id="spinButton">Spin the Wheel</button>
+    </div>
+
+    <div class="options-editor">
+        <textarea id="optionsList" rows="5" placeholder="Enter options separated by commas"></textarea>
+        <button id="updateWheel">Update Wheel</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
