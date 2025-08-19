@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cURL → k6 Converter (Client‑side)</title>
+  <style>
+    :root { --pad: 14px; }
+    body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji"; margin: 0; padding: 0; background:#0b1220; color:#e6ecf1; }
+    header { padding: var(--pad); border-bottom: 1px solid #1c2940; background:#0f1a2e; position: sticky; top: 0; z-index: 10; }
+    h1 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: .2px; }
+    main { display: grid; grid-template-columns: 1fr 1fr; gap: var(--pad); padding: var(--pad); }
+    @media (max-width: 980px) { main { grid-template-columns: 1fr; } }
+    .card { background:#0f1a2e; border:1px solid #1c2940; border-radius: 14px; box-shadow: 0 6px 24px rgba(0,0,0,.25); overflow: hidden; }
+    .card h2 { margin: 0; padding: 12px var(--pad); font-size: 14px; font-weight: 600; border-bottom: 1px solid #1c2940; background: #111f39; }
+    .card .body { padding: var(--pad); }
+    textarea, pre, input[type="text"] { width: 100%; box-sizing: border-box; background: #091226; color: #e6ecf1; border: 1px solid #1c2940; border-radius: 10px; padding: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 13px; line-height: 1.4; }
+    textarea { min-height: 220px; resize: vertical; }
+    pre { white-space: pre; overflow: auto; min-height: 220px; margin: 0; }
+    .row { display: flex; gap: 8px; align-items: center; margin-top: 10px; flex-wrap: wrap; }
+    button { background: #2a7ade; color:#fff; border: none; padding: 10px 14px; border-radius: 10px; font-weight: 600; cursor: pointer; box-shadow: 0 2px 0 #1f5db0; }
+    button:active { transform: translateY(1px); box-shadow: 0 1px 0 #1f5db0; }
+    .ghost { background: transparent; color: #c9d6e2; border: 1px solid #344766; box-shadow: none; }
+    .muted { color:#91a3bb; font-size: 12px; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    kbd { background:#0b1a33; border:1px solid #1c2940; border-radius:6px; padding:2px 6px; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>cURL → k6 Converter (no backend)</h1>
+  </header>
+  <main>
+    <section class="card">
+      <h2>Input: cURL</h2>
+      <div class="body">
+        <textarea id="curlInput" placeholder="Paste your curl here..."></textarea>
+        <div class="row">
+          <button id="btnConvert">Convert to k6</button>
+          <button class="ghost" id="btnExample">Load example</button>
+          <span class="muted">Pro tip: supports multi-line with <kbd>\</kbd> line continuations, single/double quotes, <kbd>-H/--header</kbd>, <kbd>-X/--request</kbd>, and <kbd>-d/--data*</kbd>.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Output: k6 code</h2>
+      <div class="body">
+        <pre id="k6Output"></pre>
+        <div class="row">
+          <button id="btnCopy">Copy</button>
+          <button class="ghost" id="btnJustRequest">Only http.* line</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<script>
+(function(){
+  const $ = sel => document.querySelector(sel);
+  const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+  function normalizeCurl(raw){
+    if(!raw) return '';
+    // Remove Windows CRs, join backslash-newline continuations, collapse whitespace
+    let s = raw.replace(/\r/g, '');
+    s = s.replace(/\\\s*\n/g, ' '); // line continuation
+    s = s.trim();
+    // If wrapped in backticks or quotes from shell copy, strip them
+    if ((s.startsWith('"') && s.endsWith('"')) || (s.startsWith("'") && s.endsWith("'"))) {
+      s = s.slice(1, -1);
+    }
+    return s;
+  }
+
+  // Tokenize respecting quotes and escapes (simple but robust enough for curl lines)
+  function splitArgs(str){
+    const args = [];
+    let cur = '';
+    let quote = null; // ' or "
+    let escape = false;
+    for(let i=0;i<str.length;i++){
+      const ch = str[i];
+      if(escape){ cur += ch; escape = false; continue; }
+      if(ch === '\\'){
+        // If this is a line-continuation already removed, treat as escape
+        escape = true; continue;
+      }
+      if(quote){
+        if(ch === quote){ quote = null; }
+        else { cur += ch; }
+      } else {
+        if(ch === '"' || ch === "'") quote = ch;
+        else if(/\s/.test(ch)) { if(cur){ args.push(cur); cur=''; } }
+        else { cur += ch; }
+      }
+    }
+    if(cur) args.push(cur);
+    return args;
+  }
+
+  function parseCurl(cmd){
+    const result = { method: 'GET', url: '', headers: {}, body: null };
+    if(!cmd) return result;
+
+    // Remove leading 'curl'
+    cmd = cmd.trim();
+    if(cmd.startsWith('curl')) cmd = cmd.slice(4).trim();
+
+    const args = splitArgs(cmd);
+
+    for(let i=0;i<args.length;i++){
+      const a = args[i];
+      const next = () => args[++i];
+
+      switch(true){
+        case a === '-X' || a === '--request': {
+          const m = (next() || 'GET').toUpperCase();
+          result.method = m;
+          break;
+        }
+        case a === '-H' || a === '--header': {
+          let h = next() || '';
+          const idx = h.indexOf(':');
+          if(idx > -1){
+            const name = h.slice(0, idx).trim();
+            const value = h.slice(idx+1).trim();
+            if(result.headers[name]) result.headers[name] += ', ' + value; else result.headers[name] = value;
+          }
+          break;
+        }
+        case a === '--url': {
+          result.url = next() || result.url; break;
+        }
+        case a.startsWith('http://') || a.startsWith('https://') : {
+          result.url = a; break;
+        }
+        case a === '-d' || a === '--data' || a === '--data-raw' || a === '--data-binary' || a === '--data-urlencode': {
+          result.body = next() || '';
+          // curl defaults to POST if -d is present and no -X given
+          if(result.method === 'GET') result.method = 'POST';
+          break;
+        }
+        // ignore flags that don't affect k6 generation directly
+        case a === '-L' || a === '--location' || a === '--compressed' || a === '-s' || a === '--silent': {
+          break;
+        }
+        default: {
+          // Unrecognized token: if it looks like a URL but was quoted oddly, keep best effort
+          if(/^(https?:)/.test(a)) result.url = a;
+          break;
+        }
+      }
+    }
+    return result;
+  }
+
+  function maybeDetectJson(body){
+    if(!body) return { isJson:false, payload: body };
+    const trimmed = body.trim();
+    const looksJson = (trimmed.startsWith('{') && trimmed.endsWith('}')) || (trimmed.startsWith('[') && trimmed.endsWith(']'));
+    return { isJson: looksJson, payload: body };
+  }
+
+  function escapeBackticks(s){ return (s || '').replace(/`/g, '\\`'); }
+
+  function buildK6({method, url, headers, body}){
+    const headerLines = JSON.stringify(headers, null, 2);
+    const upper = (method || 'GET').toUpperCase();
+    const httpFn = upper === 'GET' ? 'get' : upper === 'POST' ? 'post' : upper === 'PUT' ? 'put' : upper === 'PATCH' ? 'patch' : upper === 'DELETE' ? 'del' : upper.toLowerCase();
+
+    const hasBody = body != null && body !== '' && upper !== 'GET' && httpFn !== 'get';
+    const { isJson, payload } = maybeDetectJson(body);
+
+    const payloadLine = hasBody ? (isJson ? `const payload = JSON.stringify(${safeJsonParseOrString(payload)});`
+                                          : `const payload = \`${escapeBackticks(payload)}\`;`) : '';
+
+    const resLine = hasBody
+      ? `const res = http.${httpFn}(url, payload, params);`
+      : `const res = http.${httpFn}(url, params);`;
+
+    return `import http from 'k6/http';\nimport { sleep } from 'k6';\n\nexport default function () {\n  const url = '${url}';\n  const params = {\n    headers: ${headerLines || '{}'}\n  };\n  ${payloadLine}\n  ${resLine}\n  console.log(res.status);\n  sleep(1);\n}`;
+  }
+
+  // Try to turn a JSON-looking string into an object literal, otherwise keep as string
+  function safeJsonParseOrString(s){
+    try { const o = JSON.parse(s); return JSON.stringify(o, null, 2); } catch { return `\`${escapeBackticks(s)}\``; }
+  }
+
+  function convert(){
+    const raw = normalizeCurl($('#curlInput').value);
+    if(!/^curl\b/.test(raw)) { /* allow missing 'curl' for convenience */ }
+    const parsed = parseCurl(raw);
+    if(!parsed.url){
+      $('#k6Output').textContent = '// Could not detect URL. Make sure your cURL includes a URL or --url option.';
+      return;
+    }
+    const code = buildK6(parsed);
+    $('#k6Output').textContent = code;
+  }
+
+  function loadExample(){
+    const ex = `curl --location 'https://mn4sg3xappl101.ideasstg.int/api/meeting-package-pricing/pricing-details/v1?startDate=2025-07-07&endDate=2025-07-21&meetingRoomIds=76%2C102&productIds=1%2C2%2C3%2C4%2C5%2C6' \\\n--header 'userId: 4d7ebe18-35e4-4934-a787-e975ab1b9d38' \\\n--header 'upsId: 60743f7f-8130-4cab-a59a-3351e6231011' \\\n--header 'Authorization: Bearer <TOKEN>'`;
+    $('#curlInput').value = ex;
+    convert();
+  }
+
+  function copyOut(){
+    const txt = $('#k6Output').textContent;
+    navigator.clipboard.writeText(txt).then(()=>{
+      const btn = $('#btnCopy');
+      const orig = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(()=> btn.textContent = orig, 1200);
+    });
+  }
+
+  function justRequest(){
+    const full = $('#k6Output').textContent;
+    const m = full.match(/\s+(const res = http\.[^;]+;)/);
+    if(m){ navigator.clipboard.writeText(m[1]).then(()=>{
+      const btn = $('#btnJustRequest');
+      const orig = btn.textContent; btn.textContent = 'Copied http.* line';
+      setTimeout(()=> btn.textContent = orig, 1200);
+    }); }
+  }
+
+  $('#btnConvert').addEventListener('click', convert);
+  $('#btnExample').addEventListener('click', loadExample);
+  $('#btnCopy').addEventListener('click', copyOut);
+  $('#btnJustRequest').addEventListener('click', justRequest);
+})();
+</script>
+</body>
+</html>
