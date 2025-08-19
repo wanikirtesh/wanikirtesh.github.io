@@ -15,10 +15,19 @@ $(document).ready(function() {
         const insideRadius = 50;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-		ctx.shadowColor = "lightblue";
-		ctx.shadowBlur = 8;
 
-		const baseFontSize = 20; // Base font size
+		ctx.shadowColor = "black";
+		ctx.shadowBlur = 18;
+        ctx.beginPath()
+        ctx.arc(300, 300, outsideRadius, 0, 2 * Math.PI, false);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = "lightblue";
+        ctx.save()
+		const baseFontSize = 30; // Base font size
 		const dynamicFontSize = Math.max(10, baseFontSize - options.length); // Decrease font size as options increase
 		
 		ctx.font = `${dynamicFontSize}px Arial`;
@@ -26,19 +35,16 @@ $(document).ready(function() {
         for (let i = 0; i < options.length; i++) {
             const angle = startAngle + i * arc;
             ctx.fillStyle =  colors[i] //i % 2 === 0 ? "#FFCC00" : "#FF9900";
-			
             ctx.beginPath();
             ctx.arc(300, 300, outsideRadius, angle, angle + arc, false);
             ctx.arc(300, 300, insideRadius, angle + arc, angle, true);
             ctx.stroke();
             ctx.fill();
-
             ctx.save();
             ctx.fillStyle = "black";
             ctx.translate(300 + Math.cos(angle + arc / 2) * textRadius,
                           300 + Math.sin(angle + arc / 2) * textRadius);
             ctx.rotate(angle + arc / 2 + Math.PI / 2);
-			
             ctx.fillText(options[i], -ctx.measureText(options[i]).width / 2, 0);
             ctx.restore();
         }
@@ -58,7 +64,7 @@ $(document).ready(function() {
 
     function rotateWheel() {
         const spinAngleStart = Math.random() * 5 + 10;
-        let spinTime = 0;
+        let spinTime = 1;
         const spinTimeTotal = Math.random() * 300 + 400;
 
         function rotate() {
@@ -68,7 +74,7 @@ $(document).ready(function() {
 
                 return;
             }
-            const spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
+            const spinAngle = spinAngleStart - easeOut(spinTime, -10, spinAngleStart, spinTimeTotal);
             startAngle += (spinAngle * Math.PI / 180);
             drawWheel();
             spinTimeout = setTimeout(rotate, 30);

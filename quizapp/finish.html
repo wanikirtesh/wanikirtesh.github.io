@@ -1,5 +1,5 @@
 <div>
-  Thanks for participating!
+  <span id="msg"></span> Thanks for participating!
 
   <div>Attempted : <span id="attempted"></span></div>
   <div>Correct : <span id="correct"></span></div>
@@ -14,4 +14,8 @@
     $("#skipped").text(objResult.description.filter(x => x.answer === "").length)
     $("#resultJson").text(JSON.stringify(objResult))
   })
+
+  function printMsg(msg){
+    $('#msg').text(msg)
+  }
 </script>

@@ -64,7 +64,7 @@ function startTimer(minutes) {
         timerElement.text("00:00:00");
       }
       isFinished = true;
-      $("#container").load("timeout.html");
+      $("#container").load("finish.html",function (){printMsg("Timeout!!!")});
     }
   }
 
